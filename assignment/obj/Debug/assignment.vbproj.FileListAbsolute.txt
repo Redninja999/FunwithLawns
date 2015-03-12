@@ -1,0 +1,18 @@
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\bin\Debug\assignment.exe.config
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\bin\Debug\assignment.exe
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\bin\Debug\assignment.pdb
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\bin\Debug\assignment.xml
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\obj\Debug\assignment.Resources.resources
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\obj\Debug\assignment.vbproj.GenerateResource.Cache
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\obj\Debug\assignment.exe
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\obj\Debug\assignment.xml
+C:\Users\maxwell.palmer\AppData\Local\Temporary Projects\assignment\obj\Debug\assignment.pdb
+H:\VB.net\tutorials\assignment\assignment\bin\Debug\assignment.exe.config
+H:\VB.net\tutorials\assignment\assignment\obj\Debug\assignment.exe
+H:\VB.net\tutorials\assignment\assignment\obj\Debug\assignment.xml
+H:\VB.net\tutorials\assignment\assignment\obj\Debug\assignment.pdb
+H:\VB.net\tutorials\assignment\assignment\bin\Debug\assignment.exe
+H:\VB.net\tutorials\assignment\assignment\bin\Debug\assignment.pdb
+H:\VB.net\tutorials\assignment\assignment\bin\Debug\assignment.xml
+H:\VB.net\tutorials\assignment\assignment\obj\Debug\assignment.Resources.resources
+H:\VB.net\tutorials\assignment\assignment\obj\Debug\assignment.vbproj.GenerateResource.Cache
