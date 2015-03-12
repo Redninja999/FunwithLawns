@@ -220,7 +220,61 @@
         Console.ReadKey()
     End Sub
     Sub editincompletebookings()
+        Console.Clear()
+        If newbooking.Count = 0 Then
+            Console.WriteLine("There are no bookings on this program.")
+        Else
+            Dim index As Integer = getbookingnum()
+            If index >= 0 And index < newbooking.Count Then
+                Console.Clear()
+                Dim name As String
+                Dim address As String
+                Dim numbers As String
+                Dim dates As String
+                Dim time As String
+                Console.WriteLine("Booking details: ")
+                Console.WriteLine()
+                Console.WriteLine("        " & newbooking(index).clientname)
+                Console.WriteLine("        " & newbooking(index).clientaddress)
+                Console.WriteLine("        " & newbooking(index).phonenumbers)
+                Console.WriteLine("        " & newbooking(index).dateofbooking.ToString("MM/dd/yy"))
+                Console.WriteLine("        " & newbooking(index).timeofbooking.ToString("H:mm tt"))
+                Console.WriteLine()
 
+                Console.WriteLine("New booking details <just press enter to retain original values>:")
+                Console.WriteLine()
+                Console.Write("Client's name: ")
+                name = Console.ReadLine
+                Console.Write("Client's address: ")
+                address = Console.ReadLine
+                Console.Write("Contact number: ")
+                numbers = Console.ReadLine
+                Console.Write("Date of booking (DD/MM/YY): ")
+                dates = Console.ReadLine
+                Console.Write("Time of booking (HH:MM AM/PM): ")
+                time = Console.ReadLine
+                If name <> "" Then
+                    newbooking(index).clientname = name
+                End If
+                If address <> "" Then
+                    newbooking(index).clientaddress = address
+                End If
+                If numbers <> "" Then
+                    newbooking(index).phonenumbers = numbers
+                End If
+                If dates <> "" Then
+                    newbooking(index).dateofbooking = dates
+                End If
+                If time <> "" Then
+                    newbooking(index).timeofbooking = time
+                End If
+                Console.WriteLine("Update complete!")
+                Console.WriteLine()
+                Console.WriteLine("Press any key to continue...")
+                Console.ReadKey()
+
+            End If
+        End If
     End Sub
     Sub removebooking()
         Console.Clear()
@@ -385,7 +439,7 @@
 
     Sub Main()
 
-
+        Console.ForegroundColor = ConsoleColor.Red
         Console.SetCursorPosition(23, 0)
         Console.WriteLine("Welcome to Fun With Lawns v0.1")
         Console.SetCursorPosition(18, 1)

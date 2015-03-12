@@ -16,3 +16,12 @@ H:\VB.net\tutorials\assignment\assignment\bin\Debug\assignment.pdb
 H:\VB.net\tutorials\assignment\assignment\bin\Debug\assignment.xml
 H:\VB.net\tutorials\assignment\assignment\obj\Debug\assignment.Resources.resources
 H:\VB.net\tutorials\assignment\assignment\obj\Debug\assignment.vbproj.GenerateResource.Cache
+H:\VB.net\tutorials\assesment cause screw you\assignment\bin\Debug\assignment.exe.config
+H:\VB.net\tutorials\assesment cause screw you\assignment\obj\Debug\assignment.exe
+H:\VB.net\tutorials\assesment cause screw you\assignment\obj\Debug\assignment.xml
+H:\VB.net\tutorials\assesment cause screw you\assignment\obj\Debug\assignment.pdb
+H:\VB.net\tutorials\assesment cause screw you\assignment\bin\Debug\assignment.exe
+H:\VB.net\tutorials\assesment cause screw you\assignment\bin\Debug\assignment.pdb
+H:\VB.net\tutorials\assesment cause screw you\assignment\bin\Debug\assignment.xml
+H:\VB.net\tutorials\assesment cause screw you\assignment\obj\Debug\assignment.Resources.resources
+H:\VB.net\tutorials\assesment cause screw you\assignment\obj\Debug\assignment.vbproj.GenerateResource.Cache
