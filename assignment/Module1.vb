@@ -464,43 +464,56 @@
             Console.WriteLine("==================================================")
             Console.WriteLine("|                                                |")
             Console.WriteLine("|                                                |")
-            Console.WriteLine("|                             |")
-            Console.WriteLine("| <B> Complete a booking                         |")
-            Console.WriteLine("| <c> Remove a booking                           |")
             Console.WriteLine("|                                                |")
-            Console.WriteLine("| <D> Check incomplete bookings for next 7 days  |")
-            Console.WriteLine("| <E> View incomplete booking's details          |")
-            Console.WriteLine("| <F> Edit incomplete booking details            |")
             Console.WriteLine("|                                                |")
-            Console.WriteLine("| <G> View all incomplete booking                |")
-            Console.WriteLine("| <H> View all complete booking                  |")
-            Console.WriteLine("| <I> View todays bookings                       |")
             Console.WriteLine("|                                                |")
-            Console.WriteLine("| <J> View Business card                         |")
             Console.WriteLine("|                                                |")
-            Console.WriteLine("| <K> Archieves                                  |")
             Console.WriteLine("|                                                |")
-            Console.WriteLine("| <X> Exit                                       |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
             Console.WriteLine("==================================================")
             Console.SetCursorPosition(2, 6)
             Console.ForegroundColor = ConsoleColor.Red
             Console.WriteLine("Select from one of the following menu options: ")
             Console.SetCursorPosition(2, 8)
-            Console.ForegroundColor = ConsoleColor.Yellow
             Console.WriteLine("<A> Add a booking  ")
-
-
-
-
-
-
-
-
-
-
-
-
-
+            Console.SetCursorPosition(2, 9)
+            Console.WriteLine("<B> Complete a booking")
+            Console.SetCursorPosition(2, 10)
+            Console.WriteLine("<c> Remove a booking ")
+            Console.SetCursorPosition(2, 12)
+            Console.WriteLine("<D> Check incomplete bookings for next 7 days")
+            Console.SetCursorPosition(2, 13)
+            Console.WriteLine("<E> View incomplete booking's details ")
+            Console.SetCursorPosition(2, 14)
+            Console.WriteLine("<F> Edit incomplete booking details")
+            Console.SetCursorPosition(2, 16)
+            Console.WriteLine("<G> View all incomplete booking")
+            Console.SetCursorPosition(2, 17)
+            Console.WriteLine("<H> View all complete booking")
+            Console.SetCursorPosition(2, 18)
+            Console.WriteLine("<I> View todays bookings")
+            Console.SetCursorPosition(2, 20)
+            Console.WriteLine("<J> View Business card")
+            Console.SetCursorPosition(2, 22)
+            Console.WriteLine("<K> Archieves ")
+            Console.SetCursorPosition(2, 24)
+            Console.WriteLine("<X> Exit")
+            Console.SetCursorPosition(0, 26)
+            Console.ForegroundColor = ConsoleColor.White
+            Console.WriteLine("| Selection:                                     |")
+            Console.WriteLine("==================================================")
+            Console.SetCursorPosition(13, 26)
             selection = Console.ReadKey(True).KeyChar.ToString.ToUpper
 
             Select Case selection
