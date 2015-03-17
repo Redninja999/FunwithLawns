@@ -21,15 +21,14 @@
 
 
     End Class
-
+    Dim start As Date = Now
     Dim companys As New company
     Dim companyInfo As New company
     Dim newbooking As New List(Of booking)
-
-    Function getbookingnum()
+    Dim today As Integer
+    Function getbookingnum(complete As Boolean)
 
         Dim index As Integer = 0
-        Console.Clear()
         Console.Clear()
         Console.WriteLine("Viewing incomplete jobs")
         Console.WriteLine()
@@ -37,7 +36,10 @@
         Console.WriteLine("=============================================")
 
         For i = 0 To newbooking.Count - 1
-            Console.WriteLine("{0,-5} {1,-25} {2,-25} {3,-20}", i, newbooking(i).clientname, newbooking(i).dateofbooking, newbooking(i).timeofbooking)
+            If newbooking(i).complete = complete Then
+                Console.WriteLine("{0,-5} {1,-25} {2,-25} {3,-20}", i, newbooking(i).clientname, newbooking(i).dateofbooking.ToString("dd/MM/yy"), newbooking(i).timeofbooking.ToString("H:mm tt"))
+            End If
+
         Next
         Console.WriteLine("=============================================")
 
@@ -56,6 +58,7 @@
         companys.address = LineInput(1)
         companys.pay = LineInput(1)
         companys.hours = LineInput(1)
+        companys.hourlypay = LineInput(1)
         FileClose(1)
 
     End Sub
@@ -84,10 +87,7 @@
         Console.WriteLine()
         Console.WriteLine("Press any key to continue...")
         Console.ReadKey()
-
         FileOpen(1, "CompanyInfo.txt", OpenMode.Output)
-
-
         PrintLine(1, companys.companyname)
         PrintLine(1, companys.companyowner)
         PrintLine(1, companys.contactnumber)
@@ -95,16 +95,12 @@
         PrintLine(1, companys.pay)
         PrintLine(1, companys.hours)
         PrintLine(1, companys.hourlypay)
-
-
-
         FileClose(1)
-
     End Sub
     Sub save()
         FileOpen(1, "CompanyInfo.txt", OpenMode.Output)
 
-
+        companys.pay = companys.hours * companys.hourlypay
         PrintLine(1, companys.companyname)
         PrintLine(1, companys.companyowner)
         PrintLine(1, companys.contactnumber)
@@ -148,8 +144,8 @@
             PrintLine(2, newbooking(i).clientname)
             PrintLine(2, newbooking(i).clientaddress)
             PrintLine(2, newbooking(i).phonenumbers)
-            PrintLine(2, newbooking(i).dateofbooking)
-            PrintLine(2, newbooking(i).timeofbooking)
+            PrintLine(2, newbooking(i).dateofbooking.ToString("dd/MM/yy"))
+            PrintLine(2, newbooking(i).timeofbooking.ToString("H:mm tt"))
             PrintLine(2, newbooking(i).complete)
             PrintLine(2, newbooking(i).hours)
         Next
@@ -185,22 +181,43 @@
         Console.WriteLine("=============================================")
         For i = 0 To newbooking.Count - 1
             If newbooking(i).complete = complete Then
-                Console.WriteLine("{0,-25} {1,-10} {2,-10}", newbooking(i).clientname, newbooking(i).dateofbooking.ToString("MM/dd/yy"), newbooking(i).timeofbooking.ToString("H:mm tt"))
+                Console.WriteLine("{0,-25} {1,-10} {2,-10}", newbooking(i).clientname, newbooking(i).dateofbooking.ToString("dd/MM/yy"), newbooking(i).timeofbooking.ToString("H:mm tt"))
             End If
         Next
         Console.WriteLine("=============================================")
         Console.Write("press any key to continue...")
         Console.ReadKey()
     End Sub
-    Sub checkincompletebookings()
+    Sub checkincompletebookings(complete As Boolean)
+        '13/3/2015
+        Console.Clear()
+        Console.WriteLine("Viewing incomplete jobs from today until " & start.AddDays(7).ToString("dd/MM/yy"))
+        Console.WriteLine()
+        Console.WriteLine("{0,-25} {1,-10} {2,-10}", "Client's name", "Date", "Time")
+        Console.WriteLine("=============================================")
+        For i = 0 To newbooking.Count - 1
+            If newbooking(i).dateofbooking.ToString("dd/MM/yy") < start.AddDays(7).ToString("dd/MM/yy") Then
+                If newbooking(i).complete = complete Then
+                    Console.WriteLine("{0,-25} {1,-10} {2,-10}", newbooking(i).clientname, newbooking(i).dateofbooking.ToString("dd/MM/yy"), newbooking(i).timeofbooking.ToString("H:mm tt"))
+                End If
+            End If
+
+        Next
+        Console.WriteLine("=============================================")
+        Console.Write("press any key to continue...")
+
+
+        Console.ReadKey()
+
+
 
     End Sub
-    Sub viewincompletebookings(complete As Boolean)
+    Sub viewincompletebookings()
         Console.Clear()
         If newbooking.Count = 0 Then
             Console.WriteLine("There are no bookings on this program.")
         Else
-            Dim index As Integer = getbookingnum()
+            Dim index As Integer = getbookingnum(False)
             If index >= 0 And index < newbooking.Count Then
 
                 Console.Clear()
@@ -210,7 +227,7 @@
                 Console.WriteLine("        " & newbooking(index).clientname)
                 Console.WriteLine("        " & newbooking(index).clientaddress)
                 Console.WriteLine("        " & newbooking(index).phonenumbers)
-                Console.WriteLine("        " & newbooking(index).dateofbooking.ToString("MM/dd/yy"))
+                Console.WriteLine("        " & newbooking(index).dateofbooking.ToString("dd/MM/yy"))
                 Console.WriteLine("        " & newbooking(index).timeofbooking.ToString("H:mm tt"))
                 Console.WriteLine()
                 Console.WriteLine("Press any key to continue...")
@@ -224,7 +241,7 @@
         If newbooking.Count = 0 Then
             Console.WriteLine("There are no bookings on this program.")
         Else
-            Dim index As Integer = getbookingnum()
+            Dim index As Integer = getbookingnum(False)
             If index >= 0 And index < newbooking.Count Then
                 Console.Clear()
                 Dim name As String
@@ -237,7 +254,7 @@
                 Console.WriteLine("        " & newbooking(index).clientname)
                 Console.WriteLine("        " & newbooking(index).clientaddress)
                 Console.WriteLine("        " & newbooking(index).phonenumbers)
-                Console.WriteLine("        " & newbooking(index).dateofbooking.ToString("MM/dd/yy"))
+                Console.WriteLine("        " & newbooking(index).dateofbooking.ToString("dd/MM/yy"))
                 Console.WriteLine("        " & newbooking(index).timeofbooking.ToString("H:mm tt"))
                 Console.WriteLine()
 
@@ -281,7 +298,7 @@
         If newbooking.Count = 0 Then
             Console.WriteLine("There are no bookings on this program.")
         Else
-            Dim index As Integer = getbookingnum()
+            Dim index As Integer = getbookingnum(False)
             If index >= 0 And index < newbooking.Count Then
                 Dim ans As Char
                 Console.WriteLine("Are you sure its completed <y/n>: ")
@@ -301,7 +318,7 @@
         If newbooking.Count = 0 Then
             Console.WriteLine("There are no bookings in this program.")
         Else
-            Dim index As Integer = getbookingnum()
+            Dim index As Integer = getbookingnum(False)
 
             'Check we are good
             If index > -1 And index < newbooking.Count Then
@@ -309,7 +326,7 @@
                 Console.WriteLine("Name: " & newbooking(index).clientname)
                 Console.WriteLine("Address: " & newbooking(index).clientaddress)
                 Console.WriteLine("Phone Number: " & newbooking(index).phonenumbers)
-                Console.WriteLine("Date: " & newbooking(index).dateofbooking.ToString("MM/dd/yy"))
+                Console.WriteLine("Date: " & newbooking(index).dateofbooking.ToString("dd/MM/yy"))
                 Console.WriteLine("Time: " & newbooking(index).timeofbooking.ToString("H:mm tt"))
                 Console.WriteLine()
                 Console.WriteLine("Are you sure its completed <y/n>: ")
@@ -374,71 +391,148 @@
         Console.ReadKey()
 
     End Sub
+    Sub archieves()
+        Dim checkdate As Date
+        Dim x As String
+        Console.Clear()
+        Console.Write("would you like to see all bookings in the archieve<y/n>")
+        x = Console.ReadKey(True).KeyChar.ToString.ToUpper
+        If x = "Y" Then
+            Console.Clear()
+            Console.WriteLine("Viewing all jobs")
+            Console.WriteLine()
+            Console.WriteLine("{0,-25} {1,-10} {2,-10}", "Client's name", "Date", "Time")
+            Console.WriteLine("================================================")
+            For i = 0 To newbooking.Count - 1
+                Console.WriteLine("{0,-25} {1,-10} {2,-10}", newbooking(i).clientname, newbooking(i).dateofbooking.ToString("dd/MM/yy"), newbooking(i).timeofbooking.ToString("H:mm tt"))
+            Next
+        Else
+            Console.Clear()
+            Console.Write("What is the date you wan to check<DD/MM/YY>? ")
+            checkdate = Console.ReadLine()
+            Console.Clear()
+            Console.WriteLine("Viewing jobs during " & checkdate.ToString("dd/MM/yy"))
+            Console.WriteLine()
+            Console.WriteLine("{0,-25} {1,-10} {2,-10}", "Client's name", "Date", "Time")
+            Console.WriteLine("================================================")
+            For i = 0 To newbooking.Count - 1
+                If newbooking(i).dateofbooking.ToString("dd/MM/yy") = checkdate.ToString("dd/MM/yy") Then
+                    Console.WriteLine("{0,-25} {1,-10} {2,-10}", newbooking(i).clientname, newbooking(i).dateofbooking.ToString("dd/MM/yy"), newbooking(i).timeofbooking.ToString("H:mm tt"))
+                End If
 
+            Next
+        End If
+
+        Console.WriteLine("=============================================")
+        Console.Write("press any key to continue...")
+        Console.ReadKey()
+
+    End Sub
+    Sub todaysjobs()
+        Dim checkdate As Date = Now
+        Console.Clear()
+        Console.WriteLine("Viewing todays jobs")
+        Console.WriteLine()
+        Console.WriteLine("{0,-25} {1,-10} {2,-10}", "Client's name", "Date", "Time")
+        Console.WriteLine("================================================")
+        For i = 0 To newbooking.Count - 1
+            If newbooking(i).dateofbooking.ToString("dd/MM/yy") = checkdate.ToString("dd/MM/yy") Then
+                Console.WriteLine("{0,-25} {1,-10} {2,-10}", newbooking(i).clientname, newbooking(i).dateofbooking.ToString("dd/MM/yy"), newbooking(i).timeofbooking.ToString("H:mm tt"))
+            End If
+        Next
+        Console.WriteLine("=============================================")
+        Console.Write("press any key to continue...")
+        Console.ReadKey()
+    End Sub
     Sub menu()
         Dim selection As Char
 
         Do
             companys.pay = companys.hours * companys.hourlypay
+            Console.ForegroundColor = ConsoleColor.Red
             Console.Clear()
             Console.WriteLine("Welcome " & companys.companyowner)
-            Console.WriteLine("--------------------------------------------------")
-            Console.WriteLine("Total completed hours: " & companys.hours)
-            Console.WriteLine("Total income:          $" & companys.pay)
-            Console.WriteLine("--------------------------------------------------")
-            Console.WriteLine()
-            Console.WriteLine("Select from one of the following menu options:")
-            Console.WriteLine()
+            Console.WriteLine("This is your own personal booking program.")
+            Console.ForegroundColor = ConsoleColor.White
+            Console.WriteLine("==================================================")
+            Console.WriteLine("|Total completed hours: " & companys.hours)
+            Console.SetCursorPosition(49, 3)
+            Console.WriteLine("|")
+            Console.WriteLine("|Total income:          $" & companys.pay)
+            Console.SetCursorPosition(49, 4)
+            Console.WriteLine("|")
+            Console.WriteLine("==================================================")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("|                             |")
+            Console.WriteLine("| <B> Complete a booking                         |")
+            Console.WriteLine("| <c> Remove a booking                           |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("| <D> Check incomplete bookings for next 7 days  |")
+            Console.WriteLine("| <E> View incomplete booking's details          |")
+            Console.WriteLine("| <F> Edit incomplete booking details            |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("| <G> View all incomplete booking                |")
+            Console.WriteLine("| <H> View all complete booking                  |")
+            Console.WriteLine("| <I> View todays bookings                       |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("| <J> View Business card                         |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("| <K> Archieves                                  |")
+            Console.WriteLine("|                                                |")
+            Console.WriteLine("| <X> Exit                                       |")
+            Console.WriteLine("==================================================")
+            Console.SetCursorPosition(2, 6)
+            Console.ForegroundColor = ConsoleColor.Red
+            Console.WriteLine("Select from one of the following menu options: ")
             Console.SetCursorPosition(2, 8)
-            Console.WriteLine("<A> Add a booking")
-            Console.SetCursorPosition(2, 9)
-            Console.WriteLine("<B> View all incomplete booking")
-            Console.SetCursorPosition(2, 10)
-            Console.WriteLine("<C> View all complete booking")
-            Console.SetCursorPosition(2, 11)
-            Console.WriteLine("<D> Check incomplete bookings for next 7 days")
-            Console.SetCursorPosition(2, 13)
-            Console.WriteLine("<E> View incomplete booking's details")
-            Console.SetCursorPosition(2, 14)
-            Console.WriteLine("<F> Edit incomplete booking details")
-            Console.SetCursorPosition(2, 16)
-            Console.WriteLine("<G> Remove a booking")
-            Console.SetCursorPosition(2, 17)
-            Console.WriteLine("<H> Complete a booking")
-            Console.SetCursorPosition(2, 19)
-            Console.WriteLine("<I> View Business card")
-            Console.SetCursorPosition(2, 21)
-            Console.WriteLine("<X> Exit")
+            Console.ForegroundColor = ConsoleColor.Yellow
+            Console.WriteLine("<A> Add a booking  ")
+
+
+
+
+
+
+
+
+
+
+
+
+
             selection = Console.ReadKey(True).KeyChar.ToString.ToUpper
+
             Select Case selection
                 Case "A"
                     addbooking()
-                Case "B"
+                Case "G"
                     viewbookings(False)
-                Case "C"
+                Case "H"
                     viewbookings(True)
                 Case "D"
-                    checkincompletebookings()
+                    checkincompletebookings(False)
                 Case "E"
-                    viewincompletebookings(False)
+                    viewincompletebookings()
                 Case "F"
                     editincompletebookings()
-                Case "G"
+                Case "C"
                     removebooking()
-                Case "H"
+                Case "B"
                     completedbooking()
-                Case "I"
+                Case "J"
                     viewbusinesscard()
+                Case "K"
+                    archieves()
+                Case "I"
+                    todaysjobs()
             End Select
 
         Loop Until selection = "X"
-
-
-
     End Sub
 
     Sub Main()
-
+        Console.Clear()
         Console.ForegroundColor = ConsoleColor.Red
         Console.SetCursorPosition(23, 0)
         Console.WriteLine("Welcome to Fun With Lawns v0.1")
@@ -448,22 +542,32 @@
         Console.WriteLine("Press any key to continue...")
         Console.ReadKey()
         If Not IO.File.Exists("CompanyInfo.txt") Then
-            MakeCompanyInfo()
-            menu()
-            save()
-
-            Console.Clear()
+            If Not IO.File.Exists("BookingData.txt") Then
+                MakeCompanyInfo()
+                menu()
+                save()
+                savebookings()
+            Else
+                MakeCompanyInfo()
+                loadbookings()
+                menu()
+                save()
+                savebookings()
+            End If
 
         Else
-
-            loadCompanyinfo()
-            loadbookings()
-            menu()
-            save()
-            savebookings()
-
-
-
+            If Not IO.File.Exists("BookingData.txt") Then
+                loadCompanyinfo()
+                menu()
+                save()
+                savebookings()
+            Else
+                loadCompanyinfo()
+                loadbookings()
+                menu()
+                save()
+                savebookings()
+            End If
         End If
     End Sub
 

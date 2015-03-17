@@ -25,3 +25,12 @@ H:\VB.net\tutorials\assesment cause screw you\assignment\bin\Debug\assignment.pd
 H:\VB.net\tutorials\assesment cause screw you\assignment\bin\Debug\assignment.xml
 H:\VB.net\tutorials\assesment cause screw you\assignment\obj\Debug\assignment.Resources.resources
 H:\VB.net\tutorials\assesment cause screw you\assignment\obj\Debug\assignment.vbproj.GenerateResource.Cache
+C:\Users\max\Desktop\assignment wip\assignment\bin\Debug\assignment.exe.config
+C:\Users\max\Desktop\assignment wip\assignment\obj\Debug\assignment.exe
+C:\Users\max\Desktop\assignment wip\assignment\obj\Debug\assignment.xml
+C:\Users\max\Desktop\assignment wip\assignment\obj\Debug\assignment.pdb
+C:\Users\max\Desktop\assignment wip\assignment\bin\Debug\assignment.exe
+C:\Users\max\Desktop\assignment wip\assignment\bin\Debug\assignment.pdb
+C:\Users\max\Desktop\assignment wip\assignment\bin\Debug\assignment.xml
+C:\Users\max\Desktop\assignment wip\assignment\obj\Debug\assignment.Resources.resources
+C:\Users\max\Desktop\assignment wip\assignment\obj\Debug\assignment.vbproj.GenerateResource.Cache
