@@ -498,28 +498,33 @@
             Console.SetCursorPosition(2, 6)
             Console.ForegroundColor = ConsoleColor.Red
             Console.WriteLine("Select from one of the following menu options: ")
+            Console.ForegroundColor = ConsoleColor.Magenta
             Console.SetCursorPosition(2, 8)
             Console.WriteLine("<A> Add a booking  ")
             Console.SetCursorPosition(2, 9)
             Console.WriteLine("<B> Complete a booking")
             Console.SetCursorPosition(2, 10)
             Console.WriteLine("<C> Remove a booking ")
+            Console.ForegroundColor = ConsoleColor.Cyan
             Console.SetCursorPosition(2, 12)
             Console.WriteLine("<D> Check incomplete bookings for next 7 days")
             Console.SetCursorPosition(2, 13)
             Console.WriteLine("<E> View incomplete booking's details ")
             Console.SetCursorPosition(2, 14)
             Console.WriteLine("<F> Edit incomplete booking details")
+            Console.ForegroundColor = ConsoleColor.Green
             Console.SetCursorPosition(2, 16)
             Console.WriteLine("<G> View all incomplete booking")
             Console.SetCursorPosition(2, 17)
             Console.WriteLine("<H> View all complete booking")
             Console.SetCursorPosition(2, 18)
             Console.WriteLine("<I> View todays bookings")
+            Console.ForegroundColor = ConsoleColor.Yellow
             Console.SetCursorPosition(2, 20)
             Console.WriteLine("<J> View Business card")
             Console.SetCursorPosition(2, 21)
             Console.WriteLine("<K> Archieves ")
+            Console.ForegroundColor = ConsoleColor.Red
             Console.SetCursorPosition(2, 23)
             Console.WriteLine("<X> Exit")
             Console.SetCursorPosition(0, 25)
@@ -531,7 +536,7 @@
             Console.ForegroundColor = ConsoleColor.Magenta
             Console.WriteLine("You have " & counter & " job(S) today")
             Console.SetCursorPosition(13, 25)
-
+            Console.ForegroundColor = ConsoleColor.White
             selection = Console.ReadKey(True).KeyChar.ToString.ToUpper
 
             Select Case selection
